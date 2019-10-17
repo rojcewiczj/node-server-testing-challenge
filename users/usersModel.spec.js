@@ -29,7 +29,7 @@ describe('users model', () => {
     });
   });
 
-  it('should add the provided user to database', async () => {
+  it('should add the provided user to database ', async () => {
     let user = await Users.insert({ name: 'Jane' });
     expect(user.name).toBe('Jane');
 
@@ -38,5 +38,23 @@ describe('users model', () => {
 
     const users = await db('users');
     expect(users).toHaveLength(2);
+
   });
+  it('should remove the provided user from database ', async () => {
+    let user = await Users.insert({ name: 'Jane' });
+    expect(user.name).toBe('Jane');
+
+     await Users.remove({ id: '1' });
+    
+
+    const users = await db('users');
+    expect(users).toHaveLength(1);
+
+  });
+
 });
+
+
+
+
+

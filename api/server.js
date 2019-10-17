@@ -1,6 +1,6 @@
 const express = require('express');
 
-const Users = require('../users/uersModel.js');
+const Users = require('../users/usersModel.js');
 
 const server = express();
 
@@ -13,7 +13,7 @@ server.get('/', (req, res) => {
 server.get('/users', (req, res) => {
   Users.getAll()
     .then(users => {
-      res.status(200).json(rows);
+      res.status(200).json(users);
     })
     .catch(error => {
       res.status(500).json(error);
